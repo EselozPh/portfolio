@@ -41,49 +41,48 @@
       color: #000;
       font-weight: normal;
     }
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fefefe;
+      color: #424a4d;
+      padding: 15px 20px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      z-index: 9999;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .cookie-banner a {
+      color: #424a4d;
+      text-decoration: underline;
+    }
+
+    .cookie-banner button {
+      padding: 6px 12px;
+      background: #424a4d;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .cookie-banner button:hover {
+      opacity: 0.85;
+    }
   </style>
-<style>
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fefefe;
-  color: #424a4d;
-  padding: 15px 20px;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  z-index: 9999;
-  flex-wrap: wrap;
-}
-
-.cookie-banner p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.cookie-banner a {
-  color: #424a4d;
-  text-decoration: underline;
-}
-
-.cookie-banner button {
-  padding: 6px 12px;
-  background: #424a4d;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.cookie-banner button:hover {
-  opacity: 0.85;
-}
-</style>
 </head>
 
 <body>
@@ -179,5 +178,14 @@
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
 <script src="assets/theme/js/script.js"></script>
 
-</body>
-</html>
+<script>
+// Banner cookie funzionante come nella home
+if (!localStorage.getItem('cookieAccepted')) {
+  document.getElementById('cookie-banner').style.display = 'flex';
+} else {
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+
+document.getElementById('accept-cookies').addEventListener('click', function() {
+  localStorage.setItem('cookieAccepted', 'true');
+  document.getElementById('cookie-banner').
