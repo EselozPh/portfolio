@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="assets/images/fav1.png" type="image/x-icon">
   <meta name="description" content="Independent photographer focused on political events, protests, and current affairs. Featuring tear sheets, blog, and image archive.">
 
-  <title>Photo Archive | Vincenzo Nuzzolese</title>
+  <title>Vincenzo Nuzzolese | Archive</title>
 
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -41,7 +41,7 @@
       font-weight: normal;
     }
 
-    /* Banner cookie */
+    /* Banner cookie come la home */
     .cookie-banner {
       position: fixed;
       bottom: 0;
@@ -57,7 +57,6 @@
       font-family: Arial, sans-serif;
       z-index: 9999;
       flex-wrap: wrap;
-      display: none; /* nascosto di default */
     }
 
     .cookie-banner p {
@@ -90,7 +89,7 @@
 
 <!-- Cookie Banner -->
 <div id="cookie-banner" class="cookie-banner">
-  <p>This website uses cookies to ensure you get the best experience. <a href="cookie.html">Cookie Policy</a></p>
+  <p>This website uses cookies to ensure you get the best experience. <a href="/cookie.html">Cookie Policy</a></p>
   <button id="accept-cookies">Accept</button>
 </div>
 
@@ -100,7 +99,7 @@
     <div class="container">
       <div class="navbar-brand">
         <span class="navbar-caption-wrap">
-          <a class="navbar-caption text-black display-5" href="https://www.vincenzonuzzolese.com">VINCENZO NUZZOLESE</a>
+          <a class="navbar-caption text-black display-5" href="https://www.vincenzonuzzolese.com">VINCENZO NUZZOLSESE</a>
         </span>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,7 +177,7 @@
 <script src="assets/theme/js/script.js"></script>
 
 <script>
-  // Mostra il banner se non è stato ancora accettato
+  // Controlla se il banner è già stato accettato
   if (!localStorage.getItem('cookieAccepted')) {
     document.getElementById('cookie-banner').style.display = 'flex';
   }
