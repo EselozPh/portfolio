@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/web/assets/gdpr-plugin/gdpr-styles.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -41,16 +40,58 @@
       color: #000;
       font-weight: normal;
     }
+
+    /* Banner cookie */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fefefe;
+      color: #424a4d;
+      padding: 15px 20px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      z-index: 9999;
+      flex-wrap: wrap;
+      display: none; /* nascosto di default */
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .cookie-banner a {
+      color: #424a4d;
+      text-decoration: underline;
+    }
+
+    .cookie-banner button {
+      padding: 6px 12px;
+      background: #424a4d;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .cookie-banner button:hover {
+      opacity: 0.85;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- Cookie Banner Mobirise -->
-<div class="cookies-alert alert-box mbr-fixed-bottom" 
-     data-cookie-text="This website uses cookies to ensure you get the best experience." 
-     data-cookie-button-text="Accept">
-  <p>This website uses cookies to ensure you get the best experience. <a href="/cookie.html">Cookie Policy</a></p>
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <p>This website uses cookies to ensure you get the best experience. <a href="cookie.html">Cookie Policy</a></p>
+  <button id="accept-cookies">Accept</button>
 </div>
 
 <!-- Menu -->
@@ -91,7 +132,7 @@
         This section provides access to my photo archive, which features the latest galleries focused on political events, demonstrations, and current affairs.<br><br>
         The archive is hosted on the LightRocket platform and is regularly updated with new work.<br><br>
         For further information or to purchase one or more photographs, please contact me at 
-        <a href="mailto:info@vincenzonuzzolese.com">info@vincenzonuzzolese.com</a> 
+        <a href="mailto:info@vincenzonuzzolese.com" class="text-secondary">info@vincenzonuzzolese.com</a> 
         or directly through the prompt available on each image.
       </p>
       <p>
@@ -129,14 +170,25 @@
   </div>
 </section>
 
-<!-- Script Mobirise -->
+<!-- Script -->
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>
-<script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
 <script src="assets/ytplayer/index.js"></script>
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
 <script src="assets/theme/js/script.js"></script>
+
+<script>
+  // Mostra il banner se non è stato ancora accettato
+  if (!localStorage.getItem('cookieAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+
+  // Bottone Accetta
+  document.getElementById('accept-cookies').addEventListener('click', function() {
+    localStorage.setItem('cookieAccepted', 'true');
+    document.getElementById('cookie-banner').style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
