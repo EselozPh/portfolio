@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.6, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.6, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/fav1.png" type="image/x-icon">
-  <meta name="description" content="Independent photographer focused on political events, protests, and current affairs. Featuring tear sheets, blog, and image archive.">
-  
-  
-  <title>Vincenzo Nuzzolese | Independent Photographer</title>
+  <meta name="description" content="Tear Sheets - Vincenzo Nuzzolese's published work in international media outlets.">
+
+  <title>Tear Sheets | Vincenzo Nuzzolese</title>
+
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -18,309 +16,404 @@
   <link rel="stylesheet" href="assets/web/assets/gdpr-plugin/gdpr-styles.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=vXEEBi"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=vXEEBi" type="text/css">
-
-<style>
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fefefe;
-  color: #424a4d;
-  padding: 15px 20px;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  z-index: 9999;
-  flex-wrap: wrap;
-}
-
-.cookie-banner p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.cookie-banner a {
-  color: #424a4d;
-  text-decoration: underline;
-}
-
-.cookie-banner button {
-  padding: 6px 12px;
-  background: #424a4d;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.cookie-banner button:hover {
-  opacity: 0.85;
-}
-</style>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=vXEEBi">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=vXEEBi" type="text/css">
 
   <style>
-.masonry-gallery {
-  column-count: 5;
-  column-gap: 1em;
-}
+    body { padding-top: 70px; }
 
-.masonry-gallery img {
-  width: 100%;
-  display: block;
-  margin-bottom: 1em;
-  border-radius: 4px;
-  break-inside: avoid;
-}
-@media (max-width: 768px) {
-  .masonry-gallery {
-    column-count: 2;
-  }
-}
-@media (max-width: 480px) {
-  .masonry-gallery {
-    column-count: 1;
-  }
-}
-</style>
-<style>
-  body {
-    padding-top: 70px;
-  }
-</style>
-  <style>
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-  margin: 2em 0;
-}
+    .masonry-gallery {
+      column-count: 5;
+      column-gap: 1em;
+      padding: 0 1em;
+    }
+    .masonry-gallery img {
+      width: 100%;
+      display: block;
+      margin-bottom: 1em;
+      border-radius: 4px;
+      break-inside: avoid;
+      cursor: zoom-in;
+      transition: opacity 0.2s ease;
+    }
+    .masonry-gallery img:hover {
+      opacity: 0.85;
+    }
+    @media (max-width: 768px) { .masonry-gallery { column-count: 2; } }
+    @media (max-width: 480px) { .masonry-gallery { column-count: 1; } }
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+    /* Lightbox */
+    #lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox-overlay.active { display: flex; }
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 28px;
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    #lightbox-prev, #lightbox-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0 16px;
+      line-height: 1;
+    }
+    #lightbox-prev { left: 10px; }
+    #lightbox-next { right: 10px; }
 
-.video-wrapper {
-  max-width: 560px;
-  margin: 2em auto;
-}
-
-</style>
-  
+    /* YouTube embed condizionale */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      height: 0;
+      overflow: hidden;
+      margin: 2em 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .video-wrapper { max-width: 560px; margin: 2em auto; }
+    .video-placeholder {
+      max-width: 560px;
+      margin: 2em auto;
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 30px 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #555;
+    }
+    .video-placeholder a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  
+
 <!-- Cookie Banner -->
-<div id="cookie-banner" class="cookie-banner">
-  <p>This website uses cookies to ensure you get the best experience. <a href="/cookie.html">Privacy & Cookie Policy</a></p>
-  <button id="accept-cookies">Accept</button>
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#fefefe; color:#424a4d; padding:15px 20px; box-shadow:0 -2px 5px rgba(0,0,0,0.2); z-index:9999; font-family:Arial,sans-serif; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+  <p style="margin:0; font-size:14px; flex:1 1 200px;">
+    This website uses third-party cookies (Google Fonts, YouTube). <a href="cookie.html" style="color:#424a4d; text-decoration:underline;">Privacy &amp; Cookie Policy</a>
+  </p>
+  <div style="display:flex; gap:8px; flex-shrink:0;">
+    <button id="reject-cookies" style="padding:6px 14px; background:#fff; color:#424a4d; border:1px solid #424a4d; border-radius:4px; cursor:pointer; font-size:14px;">Reject</button>
+    <button id="accept-cookies" style="padding:6px 14px; background:#424a4d; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:14px;">Accept</button>
+  </div>
 </div>
 
+<!-- Lightbox -->
+<div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <button id="lightbox-prev" aria-label="Previous">&#8249;</button>
+  <img id="lightbox-img" src="" alt="Tear sheet enlarged view">
+  <button id="lightbox-next" aria-label="Next">&#8250;</button>
+</div>
 
-  <section data-bs-version="5.1" class="menu menu6 cid-uS3MMCjgR4" once="menu" id="menu06-k">
-	
-
-	<nav class="navbar navbar-dropdown opacityScroll navbar-fixed-top navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="https://www.vincenzonuzzolese.com">VINCENZO NUZZOLESE</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse opacityScroll" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+<section data-bs-version="5.1" class="menu menu6 cid-uS3MMCjgR4" once="menu" id="menu06-k">
+  <nav class="navbar navbar-dropdown opacityScroll navbar-fixed-top navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-brand">
+        <span class="navbar-caption-wrap">
+          <a class="navbar-caption text-black display-5" href="https://www.vincenzonuzzolese.com">VINCENZO NUZZOLESE</a>
+        </span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse opacityScroll" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
           <li class="nav-item"><a class="nav-link link text-black display-4" href="index.html">HOME</a></li>
           <li class="nav-item"><a class="nav-link link text-black display-4" href="https://vincenzonuzzolese.substack.com/" target="_blank" rel="noopener noreferrer">BLOG</a></li>
-          <li class="nav-item"><a class="nav-link link text-black display-4 active" href="archive.html">ARCHIVE</a></li>
-          <li class="nav-item"><a class="nav-link link text-black display-4" href="tearsheets.html">TEARSHEETS</a></li>
+          <li class="nav-item"><a class="nav-link link text-black display-4" href="archive.html">ARCHIVE</a></li>
+          <li class="nav-item"><a class="nav-link link text-black display-4 active" href="tearsheets.html">TEARSHEETS</a></li>
           <li class="nav-item"><a class="nav-link link text-black display-4" href="about.html">ABOUT</a></li>
         </ul>
-			</div>
-		</div>
-	</nav>
+      </div>
+    </div>
+  </nav>
 </section>
 
 <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5"><strong>Tear Sheets</strong></h3>
-                    
-                </div>
-            </div>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12 content-head">
+      <div class="mb-5">
+        <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5"><strong>Tear Sheets</strong></h3>
+      </div>
+    </div>
+  </div>
 
-
-<div class="masonry-gallery">
-  <img src="assets/images/ritagli113.JPG" alt="">
-  <img src="assets/images/ritagli.jpg" alt="">
-  <img src="assets/images/ritagli92.JPG" alt="">
-  <img src="assets/images/IlFoglio_0925.jpg" alt="">
-  <img src="assets/images/ritagli42.JPG" alt="">
-  <img src="assets/images/ritagli14.JPG" alt="">
-  <img src="assets/images/ritagli34.JPG" alt="">
-  <img src="assets/images/manifesto_30012026.JPG" alt="">
-<img src="assets/images/manifesto_28_02_2026.JPG" alt="">
-<img src="assets/images/Stampa_07_03_2026.JPG" alt="">
-<img src="assets/images/Dnevnik_27_01_2026.JPG" alt="">
-<img src="assets/images/Conte_CORRIERE_150126.JPG" alt="">
-<img src="assets/images/manifesto_29_05_2025.JPG" alt="">
-<img src="assets/images/manifesto_17012026.JPG" alt="">
-<img src="assets/images/manifesto_08_11_2025.JPG" alt="">
-  <img src="assets/images/ritagli37.JPG" alt="">
-  <img src="assets/images/REP_021225.JPG" alt="">
-  <img src="assets/images/ritagli39.JPG" alt="">
-  <img src="assets/images/REP_Roma_170925.jpg" alt="">
-  <img src="assets/images/ritagli47.JPG" alt="">
-  <img src="assets/images/ritagli49.JPG" alt="">
-  <img src="assets/images/ritagli52.JPG" alt="">
-  <img src="assets/images/ritagli114.JPG" alt=""> 
-  <img src="assets/images/ritagli58.JPG" alt="">
-  <img src="assets/images/ritagli59.JPG" alt="">
-<img src="assets/images/ritagli60.JPG" alt="">
-  <img src="assets/images/ritagli61.JPG" alt="">
-  <img src="assets/images/ritagli62.JPG" alt="">
-  <img src="assets/images/ritagli72.JPG" alt="">
-  <img src="assets/images/ritagli81.JPG" alt="">
-  <img src="assets/images/ritagli91.JPG" alt="">
-  <img src="assets/images/ritagli96.JPG" alt="">
-  <img src="assets/images/ritagli99.JPG" alt="">
-  <img src="assets/images/ritagli100.JPG" alt="">
-  <img src="assets/images/Espresso_300126.JPG" alt="">
-  <img src="assets/images/Espresso_190925.JPG" alt="">
-  <img src="assets/images/ritagli35.JPG" alt="">
-  <img src="assets/images/ritagli20.JPG" alt="">
-  <img src="assets/images/ritagli22.JPG" alt="">
-  <img src="assets/images/ritagli27.JPG" alt="">
-  <img src="assets/images/ritagli31.JPG" alt="">
-  <img src="assets/images/ritagli32.JPG" alt="">
-  <img src="assets/images/ritagli33.JPG" alt="">
-  <img src="assets/images/ritagli16.JPG" alt="">
-  <img src="assets/images/ritagli12.JPG" alt="">
-  <img src="assets/images/ritagli36.JPG" alt="">
-  <img src="assets/images/ritagli38.JPG" alt="">
-  <img src="assets/images/ritagli40.JPG" alt="">
-  <img src="assets/images/ritagli41.JPG" alt="">
-  <img src="assets/images/ritagli43.JPG" alt="">
-  <img src="assets/images/ritagli46.JPG" alt="">
-  <img src="assets/images/ritagli50.JPG" alt="">
-  <img src="assets/images/ritagli53.JPG" alt="">
-  <img src="assets/images/ritagli51.JPG" alt="">
-  <img src="assets/images/ritagli63.JPG" alt="">
-  <img src="assets/images/ft_300126.jpg" alt="">
-  <img src="assets/images/ritagli65.JPG" alt="">
-  <img src="assets/images/ritagli66.JPG" alt="">
-  <img src="assets/images/ritagli69.JPG" alt="">
-  <img src="assets/images/ritagli71.JPG" alt="">
-  <img src="assets/images/ritagli73.JPG" alt="">
-  <img src="assets/images/ritagli76.JPG" alt="">
-  <img src="assets/images/ritagli82.JPG" alt="">
-  <img src="assets/images/ritagli83.JPG" alt="">
-  <img src="assets/images/ritagli84.JPG" alt="">
-  <img src="assets/images/ritagli85.JPG" alt="">
-  <img src="assets/images/ritagli86.JPG" alt="">
-  <img src="assets/images/LeFigarò_171025_2.JPG" alt="">
-<img src="assets/images/picoftheday_08_03_26.JPG" alt="">
-  <img src="assets/images/manifesto_26102025.JPG" alt="">
-  <img src="assets/images/ritagli94.JPG" alt="">
-  <img src="assets/images/ritagli95.JPG" alt="">
-  <img src="assets/images/ritagli104.JPG" alt="">
-  <img src="assets/images/ritagli105.JPG" alt="">
-  <img src="assets/images/ritagli106.JPG" alt="">
-  <img src="assets/images/ritagli108.JPG" alt="">
-  <img src="assets/images/LeFigarò_171025.JPG" alt="">
-  <img src="assets/images/ritagli110.JPG" alt="">
-  <img src="assets/images/ritagli111.JPG" alt="">
-
-  <!-- aggiungi tutte le immagini che vuoi -->
+  <div class="masonry-gallery" id="masonry-gallery">
+    <img src="assets/images/ritagli113.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli.jpg" alt="Tear sheet">
+    <img src="assets/images/ritagli92.JPG" alt="Tear sheet">
+    <img src="assets/images/IlFoglio_0925.jpg" alt="Tear sheet - Il Foglio, September 2025">
+    <img src="assets/images/ritagli42.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli14.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli34.JPG" alt="Tear sheet">
+    <img src="assets/images/manifesto_30012026.JPG" alt="Tear sheet - Il Manifesto, 30 January 2026">
+    <img src="assets/images/manifesto_28_02_2026.JPG" alt="Tear sheet - Il Manifesto, 28 February 2026">
+    <img src="assets/images/Stampa_07_03_2026.JPG" alt="Tear sheet - La Stampa, 7 March 2026">
+    <img src="assets/images/Dnevnik_27_01_2026.JPG" alt="Tear sheet - Dnevnik, 27 January 2026">
+    <img src="assets/images/Conte_CORRIERE_150126.JPG" alt="Tear sheet - Corriere della Sera, 15 January 2026">
+    <img src="assets/images/manifesto_29_05_2025.JPG" alt="Tear sheet - Il Manifesto, 29 May 2025">
+    <img src="assets/images/manifesto_17012026.JPG" alt="Tear sheet - Il Manifesto, 17 January 2026">
+    <img src="assets/images/manifesto_08_11_2025.JPG" alt="Tear sheet - Il Manifesto, 8 November 2025">
+    <img src="assets/images/ritagli37.JPG" alt="Tear sheet">
+    <img src="assets/images/REP_021225.JPG" alt="Tear sheet - la Repubblica, 2 December 2025">
+    <img src="assets/images/ritagli39.JPG" alt="Tear sheet">
+    <img src="assets/images/REP_Roma_170925.jpg" alt="Tear sheet - la Repubblica Roma, 17 September 2025">
+    <img src="assets/images/ritagli47.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli49.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli52.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli114.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli58.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli59.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli60.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli61.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli62.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli72.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli81.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli91.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli96.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli99.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli100.JPG" alt="Tear sheet">
+    <img src="assets/images/Espresso_300126.JPG" alt="Tear sheet - L'Espresso, 30 January 2026">
+    <img src="assets/images/Espresso_190925.JPG" alt="Tear sheet - L'Espresso, 19 September 2025">
+    <img src="assets/images/ritagli35.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli20.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli22.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli27.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli31.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli32.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli33.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli16.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli12.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli36.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli38.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli40.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli41.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli43.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli46.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli50.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli53.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli51.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli63.JPG" alt="Tear sheet">
+    <img src="assets/images/ft_300126.jpg" alt="Tear sheet - Financial Times, 30 January 2026">
+    <img src="assets/images/ritagli65.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli66.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli69.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli71.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli73.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli76.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli82.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli83.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli84.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli85.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli86.JPG" alt="Tear sheet">
+    <img src="assets/images/LeFigarò_171025_2.JPG" alt="Tear sheet - Le Figaro, 17 October 2025">
+    <img src="assets/images/picoftheday_08_03_26.JPG" alt="Tear sheet - Pic of the Day, 8 March 2026">
+    <img src="assets/images/manifesto_26102025.JPG" alt="Tear sheet - Il Manifesto, 26 October 2025">
+    <img src="assets/images/ritagli94.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli95.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli104.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli105.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli106.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli108.JPG" alt="Tear sheet">
+    <img src="assets/images/LeFigarò_171025.JPG" alt="Tear sheet - Le Figaro, 17 October 2025">
+    <img src="assets/images/ritagli110.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli111.JPG" alt="Tear sheet">
+  </div>
 </div>
 
 <section data-bs-version="5.1" class="footer2 cid-uS3SM0wH1k" once="footers" id="footer02-x">
 
-<div class="video-wrapper">    
-<div class="video-container">
-  <iframe src=" https://www.youtube.com/embed/CYuovVl0g3Y?si=u5JfW4d-jpkabavP&amp;start=93" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allowfullscreen></iframe>
-</div>
-   </div>
-    
-<div style="text-align:center; margin:40px 0;">
-  <a href="archive.html" 
-     style="display:inline-block; padding:15px 30px; background-color:#222; color:#fff; text-decoration:none; font-weight:bold; font-size:18px; border-radius:8px;">
-    View and purchase my photographs
-  </a>
-  <br>
-  <span style="display:inline-block; margin-top:10px; font-size:14px; color:#555;">
-    For further information or purchases, you can also contact me at 
-    <a href="mailto:info@vincenzonuzzolese.com" style="color:#222; text-decoration:underline;">
-      info@vincenzonuzzolese.com
+  <!-- Video YouTube: mostrato solo se consenso accettato -->
+  <div class="video-wrapper">
+    <a href="https://www.youtube.com/watch?v=CYuovVl0g3Y&t=107s" target="_blank" rel="noopener noreferrer" style="display:block; position:relative; border-radius:6px; overflow:hidden;">
+      <img src="https://i.ytimg.com/vi/CYuovVl0g3Y/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block;">
+      <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.15);">
+        <svg width="68" height="48" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#ff0000"/>
+          <path d="M45 24 27 14v20" fill="#ffffff"/>
+        </svg>
+      </div>
     </a>
-  </span>
-</div>
+  </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-6 center mt-2 mb-3">
-                <p class="mbr-fonts-style copyright mb-0 display-7">
-                    © 2025 Vincenzo Nuzzolese. All rights reserved.
-                </p>
-            </div>
-            <div class="col-12 col-lg-6 center">
-                <div class="row-links mt-2 mb-3">
-                    <ul class="row-links-soc">
-                        
-                        
-                        
-                        
-                    <li class="row-links-soc-item mbr-fonts-style display-7">
-                            <a href="https://www.instagram.com/vincenzo_nuzzolese/" class="text-black text-primary" target="_blank">Instagram</a>
-                        </li><li class="row-links-soc-item mbr-fonts-style display-7">
-                            <a href="https://www.linkedin.com/in/vincenzonuzzolese/" class="text-black text-primary" target="_blank">Linkedin</a>
-                        </li><li class="row-links-soc-item mbr-fonts-style display-7">
-                            <a href="mailto:info@vincenzonuzzolese.com" class="text-black text-primary">Email</a>
-                        </li></ul>
-                </div>
-            </div>
+  <div style="text-align:center; margin:40px 0;">
+    <a href="archive.html"
+       style="display:inline-block; padding:15px 30px; background-color:#222; color:#fff; text-decoration:none; font-weight:bold; font-size:18px; border-radius:8px;">
+      View and purchase my photographs
+    </a>
+    <br>
+    <span style="display:inline-block; margin-top:10px; font-size:14px; color:#555;">
+      For further information or purchases, you can also contact me at
+      <a href="/cdn-cgi/l/email-protection#c9a0a7afa689bfa0a7aaaca7b3a6a7bcb3b3a6a5acbaace7aaa6a4" style="color:#222; text-decoration:underline;"><span class="__cf_email__" data-cfemail="80e9eee6efc0f6e9eee3e5eefaefeef5fafaefece5f3e5aee3efed">[email&#160;protected]</span></a>
+    </span>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-6 center mt-2 mb-3">
+        <p class="mbr-fonts-style copyright mb-0 display-7">
+          &copy; 2026 Vincenzo Nuzzolese. All rights reserved.
+        </p>
+      </div>
+      <div class="col-12 col-lg-6 center">
+        <div class="row-links mt-2 mb-3">
+          <ul class="row-links-soc">
+            <li class="row-links-soc-item mbr-fonts-style display-7">
+              <a href="https://www.instagram.com/vincenzo_nuzzolese/" class="text-black text-primary" target="_blank">Instagram</a>
+            </li>
+            <li class="row-links-soc-item mbr-fonts-style display-7">
+              <a href="https://www.linkedin.com/in/vincenzonuzzolese/" class="text-black text-primary" target="_blank">Linkedin</a>
+            </li>
+            <li class="row-links-soc-item mbr-fonts-style display-7">
+              <a href="/cdn-cgi/l/email-protection#157c7b737a55637c7b76707b6f7a7b606f6f7a797066703b767a78" class="text-black text-primary">Email</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/html-builder.html">HTML Maker</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
+  </div>
+</section>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>
+<script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/theme/js/script.js"></script>
+
 <script>
-// Controlla se il banner è già stato accettato
-if (!localStorage.getItem('cookieAccepted')) {
-  document.getElementById('cookie-banner').style.display = 'flex';
-} else {
-  document.getElementById('cookie-banner').style.display = 'none';
-}
+  // ---- Google Fonts ----
+  function loadGoogleFonts() {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap';
+    document.head.appendChild(link);
+  }
 
-// Bottone accetta
-document.getElementById('accept-cookies').addEventListener('click', function() {
-  localStorage.setItem('cookieAccepted', 'true');
-  document.getElementById('cookie-banner').style.display = 'none';
-});
-</script>
-  
+  // ---- YouTube embed ----
+  var VIDEO_URL = 'https://www.youtube.com/embed/CYuovVl0g3Y?start=93';
+  var THUMB_URL = 'https://i.ytimg.com/vi/CYuovVl0g3Y/hqdefault.jpg';
 
-  </body>
-</html>
+  function loadYouTube() {
+    var section = document.getElementById('video-section');
+    section.innerHTML = '<div class="video-wrapper"><div class="video-container">'
+      + '<iframe src="' + VIDEO_URL + '" title="YouTube video player" frameborder="0"'
+      + ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+      + ' allowfullscreen></iframe>'
+      + '</div></div>';
+  }
+
+  function showVideoPlaceholder() {
+    var section = document.getElementById('video-section');
+    section.innerHTML = '<div class="video-wrapper">'
+      + '<div onclick="loadYouTube()" style="position:relative;cursor:pointer;border-radius:4px;overflow:hidden;background:#000;">'
+      + '<img src="' + THUMB_URL + '" alt="Click to play video" style="width:100%;display:block;opacity:0.8;">'
+      + '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">'
+      + '<svg width="64" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/><path d="M45 24 27 14v20" fill="#fff"/></svg>'
+      + '<span style="color:#fff;font-family:Arial,sans-serif;font-size:12px;background:rgba(0,0,0,0.6);padding:4px 10px;border-radius:4px;">Click to play (requires cookie consent)</span>'
+      + '</div></div></div>';
+  }
+
+  // ---- Lightbox ----
+  var images = [];
+  var currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById('lightbox-img').src = images[index].src;
+    document.getElementById('lightbox-img').alt = images[index].alt;
+    document.getElementById('lightbox-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById('lightbox-img').src = images[currentIndex].src;
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('lightbox-img').src = images[currentIndex].src;
+  }
+
+  // ---- Init ----
+  document.addEventListener("DOMContentLoaded", function () {
+    var banner = document.getElementById('cookie-banner');
+    var consent = localStorage.getItem('cookieConsent');
+
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+      loadYouTube();
+    } else if (consent === 'rejected') {
+      showVideoPlaceholder();
+    } else {
+      banner.style.display = 'flex';
+      showVideoPlaceholder();
+    }
+
+    document.getElementById('accept-cookies').addEventListener('click', function () {
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGoogleFonts();
+      loadYouTube();
+    });
+
+    document.getElementById('reject-cookies').addEventListener('click', function () {
+      localStorage.setItem('cookieConsent', 'rejected');
+      banner.style.display = 'none';
+      showVideoPlaceholder();
+    });
+
+    // Lightbox init
+    var galleryImgs = document.querySelectorAll('#masonry-gallery img');
+    galleryImgs.forEach(function (img, i) {
+      images.push(img);
+      img.addEventListener('click', function () { openLightbox(i); });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementBy
