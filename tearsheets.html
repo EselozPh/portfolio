@@ -22,6 +22,7 @@
   <style>
     body { padding-top: 70px; }
 
+    /* Masonry gallery */
     .masonry-gallery {
       column-count: 5;
       column-gap: 1em;
@@ -36,14 +37,12 @@
       cursor: zoom-in;
       transition: opacity 0.2s ease;
     }
-    .masonry-gallery img:hover {
-      opacity: 0.85;
-    }
+    .masonry-gallery img:hover { opacity: 0.8; }
     @media (max-width: 768px) { .masonry-gallery { column-count: 2; } }
     @media (max-width: 480px) { .masonry-gallery { column-count: 1; } }
 
     /* Lightbox */
-    #lightbox-overlay {
+    #lb {
       display: none;
       position: fixed;
       inset: 0;
@@ -52,46 +51,30 @@
       align-items: center;
       justify-content: center;
     }
-    #lightbox-overlay.active { display: flex; }
-    #lightbox-img {
+    #lb.open { display: flex; }
+    #lb img {
       max-width: 90vw;
       max-height: 90vh;
       object-fit: contain;
       border-radius: 4px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
     }
-    #lightbox-close {
-      position: fixed;
-      top: 20px;
-      right: 28px;
-      font-size: 2.5rem;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
-      background: none;
-      border: none;
-      padding: 0;
+    #lb-close {
+      position: fixed; top: 16px; right: 24px;
+      font-size: 2.5rem; color: #fff; cursor: pointer;
+      background: none; border: none; line-height: 1;
     }
-    #lightbox-prev, #lightbox-next {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2.5rem;
-      color: #fff;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0 16px;
-      line-height: 1;
+    #lb-prev, #lb-next {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      font-size: 3rem; color: #fff; cursor: pointer;
+      background: none; border: none; line-height: 1; padding: 0 16px;
     }
-    #lightbox-prev { left: 10px; }
-    #lightbox-next { right: 10px; }
+    #lb-prev { left: 0; }
+    #lb-next { right: 0; }
 
-    /* YouTube embed condizionale */
+    /* Video */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
-      padding-top: 30px;
       height: 0;
       overflow: hidden;
       margin: 2em 0;
@@ -102,22 +85,6 @@
       width: 100%; height: 100%;
     }
     .video-wrapper { max-width: 560px; margin: 2em auto; }
-    .video-placeholder {
-      max-width: 560px;
-      margin: 2em auto;
-      background: #f0f0f0;
-      border-radius: 8px;
-      padding: 30px 20px;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: #555;
-    }
-    .video-placeholder a {
-      color: #222;
-      font-weight: bold;
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -134,13 +101,14 @@
 </div>
 
 <!-- Lightbox -->
-<div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button id="lightbox-close" aria-label="Close">&times;</button>
-  <button id="lightbox-prev" aria-label="Previous">&#8249;</button>
-  <img id="lightbox-img" src="" alt="Tear sheet enlarged view">
-  <button id="lightbox-next" aria-label="Next">&#8250;</button>
+<div id="lb">
+  <button id="lb-close">&times;</button>
+  <button id="lb-prev">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">&#8250;</button>
 </div>
 
+<!-- Menu -->
 <section data-bs-version="5.1" class="menu menu6 cid-uS3MMCjgR4" once="menu" id="menu06-k">
   <nav class="navbar navbar-dropdown opacityScroll navbar-fixed-top navbar-expand-lg">
     <div class="container">
@@ -150,9 +118,7 @@
         </span>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <div class="hamburger">
-          <span></span><span></span><span></span><span></span>
-        </div>
+        <div class="hamburger"><span></span><span></span><span></span><span></span></div>
       </button>
       <div class="collapse navbar-collapse opacityScroll" id="navbarSupportedContent">
         <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
@@ -167,6 +133,7 @@
   </nav>
 </section>
 
+<!-- Galleria -->
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-12 content-head">
@@ -183,7 +150,6 @@
     <img src="assets/images/IlFoglio_0925.jpg" alt="Tear sheet - Il Foglio, September 2025">
     <img src="assets/images/ritagli42.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli14.JPG" alt="Tear sheet">
-    <img src="assets/images/ritagli34.JPG" alt="Tear sheet">
     <img src="assets/images/manifesto_30012026.JPG" alt="Tear sheet - Il Manifesto, 30 January 2026">
     <img src="assets/images/manifesto_28_02_2026.JPG" alt="Tear sheet - Il Manifesto, 28 February 2026">
     <img src="assets/images/Stampa_07_03_2026.JPG" alt="Tear sheet - La Stampa, 7 March 2026">
@@ -193,15 +159,13 @@
     <img src="assets/images/manifesto_17012026.JPG" alt="Tear sheet - Il Manifesto, 17 January 2026">
     <img src="assets/images/manifesto_08_11_2025.JPG" alt="Tear sheet - Il Manifesto, 8 November 2025">
     <img src="assets/images/ritagli37.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli15.JPG" alt="Tear sheet">
     <img src="assets/images/REP_021225.JPG" alt="Tear sheet - la Repubblica, 2 December 2025">
-    <img src="assets/images/ritagli39.JPG" alt="Tear sheet">
     <img src="assets/images/REP_Roma_170925.jpg" alt="Tear sheet - la Repubblica Roma, 17 September 2025">
     <img src="assets/images/ritagli47.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli49.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli52.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli114.JPG" alt="Tear sheet">
-    <img src="assets/images/ritagli58.JPG" alt="Tear sheet">
-    <img src="assets/images/ritagli59.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli60.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli61.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli62.JPG" alt="Tear sheet">
@@ -214,8 +178,13 @@
     <img src="assets/images/Espresso_300126.JPG" alt="Tear sheet - L'Espresso, 30 January 2026">
     <img src="assets/images/Espresso_190925.JPG" alt="Tear sheet - L'Espresso, 19 September 2025">
     <img src="assets/images/ritagli35.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli39.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli59.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli34.JPG" alt="Tear sheet">
+    <img src="assets/images/TPI_060326.JPG" alt="Tear sheet - The Post International">
     <img src="assets/images/ritagli20.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli22.JPG" alt="Tear sheet">
+    <img src="assets/images/ritagli58.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli27.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli31.JPG" alt="Tear sheet">
     <img src="assets/images/ritagli32.JPG" alt="Tear sheet">
@@ -259,9 +228,9 @@
   </div>
 </div>
 
+<!-- Footer con video e CTA -->
 <section data-bs-version="5.1" class="footer2 cid-uS3SM0wH1k" once="footers" id="footer02-x">
 
-  <!-- Video YouTube: mostrato solo se consenso accettato -->
   <div class="video-wrapper">
     <a href="https://www.youtube.com/watch?v=CYuovVl0g3Y&t=107s" target="_blank" rel="noopener noreferrer" style="display:block; position:relative; border-radius:6px; overflow:hidden;">
       <img src="https://i.ytimg.com/vi/CYuovVl0g3Y/hqdefault.jpg" alt="Watch on YouTube" style="width:100%; display:block;">
@@ -321,99 +290,65 @@
 <script src="assets/theme/js/script.js"></script>
 
 <script>
-  // ---- Google Fonts ----
+  // Cookie banner
   function loadGoogleFonts() {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap';
-    document.head.appendChild(link);
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap';
+    document.head.appendChild(l);
   }
 
-  // ---- YouTube embed ----
-  var VIDEO_URL = 'https://www.youtube.com/embed/CYuovVl0g3Y?start=93';
-  var THUMB_URL = 'https://i.ytimg.com/vi/CYuovVl0g3Y/hqdefault.jpg';
-
-  function loadYouTube() {
-    var section = document.getElementById('video-section');
-    section.innerHTML = '<div class="video-wrapper"><div class="video-container">'
-      + '<iframe src="' + VIDEO_URL + '" title="YouTube video player" frameborder="0"'
-      + ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
-      + ' allowfullscreen></iframe>'
-      + '</div></div>';
-  }
-
-  function showVideoPlaceholder() {
-    var section = document.getElementById('video-section');
-    section.innerHTML = '<div class="video-wrapper">'
-      + '<div onclick="loadYouTube()" style="position:relative;cursor:pointer;border-radius:4px;overflow:hidden;background:#000;">'
-      + '<img src="' + THUMB_URL + '" alt="Click to play video" style="width:100%;display:block;opacity:0.8;">'
-      + '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">'
-      + '<svg width="64" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/><path d="M45 24 27 14v20" fill="#fff"/></svg>'
-      + '<span style="color:#fff;font-family:Arial,sans-serif;font-size:12px;background:rgba(0,0,0,0.6);padding:4px 10px;border-radius:4px;">Click to play (requires cookie consent)</span>'
-      + '</div></div></div>';
-  }
-
-  // ---- Lightbox ----
-  var images = [];
-  var currentIndex = 0;
-
-  function openLightbox(index) {
-    currentIndex = index;
-    document.getElementById('lightbox-img').src = images[index].src;
-    document.getElementById('lightbox-img').alt = images[index].alt;
-    document.getElementById('lightbox-overlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox-overlay').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    document.getElementById('lightbox-img').src = images[currentIndex].src;
-  }
-
-  function showNext() {
-    currentIndex = (currentIndex + 1) % images.length;
-    document.getElementById('lightbox-img').src = images[currentIndex].src;
-  }
-
-  // ---- Init ----
   document.addEventListener("DOMContentLoaded", function () {
     var banner = document.getElementById('cookie-banner');
     var consent = localStorage.getItem('cookieConsent');
-
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      loadYouTube();
-    } else if (consent === 'rejected') {
-      showVideoPlaceholder();
-    } else {
-      banner.style.display = 'flex';
-      showVideoPlaceholder();
-    }
+    if (consent === 'accepted') { loadGoogleFonts(); }
+    else if (consent !== 'rejected') { banner.style.display = 'flex'; }
 
     document.getElementById('accept-cookies').addEventListener('click', function () {
       localStorage.setItem('cookieConsent', 'accepted');
       banner.style.display = 'none';
       loadGoogleFonts();
-      loadYouTube();
     });
-
     document.getElementById('reject-cookies').addEventListener('click', function () {
       localStorage.setItem('cookieConsent', 'rejected');
       banner.style.display = 'none';
-      showVideoPlaceholder();
     });
 
-    // Lightbox init
-    var galleryImgs = document.querySelectorAll('#masonry-gallery img');
-    galleryImgs.forEach(function (img, i) {
-      images.push(img);
-      img.addEventListener('click', function () { openLightbox(i); });
-    });
+    // Lightbox
+    var imgs = Array.from(document.querySelectorAll('#masonry-gallery img'));
+    var cur = 0;
+    var lb = document.getElementById('lb');
+    var lbImg = document.getElementById('lb-img');
 
-    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-    document.getElementBy
+    function open(i) {
+      cur = i;
+      lbImg.src = imgs[i].src;
+      lbImg.alt = imgs[i].alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function prev() { cur = (cur - 1 + imgs.length) % imgs.length; lbImg.src = imgs[cur].src; }
+    function next() { cur = (cur + 1) % imgs.length; lbImg.src = imgs[cur].src; }
+
+    imgs.forEach(function(img, i) {
+      img.addEventListener('click', function() { open(i); });
+    });
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', prev);
+    document.getElementById('lb-next').addEventListener('click', next);
+    lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    });
+  });
+</script>
+
+</body>
+</html>
